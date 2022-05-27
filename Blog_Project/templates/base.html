@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock title %}</title>
+    {% block css_links %} {% endblock css_links %}
+</head>
+<body>
+    <nav>
+        <a href="{% url 'Blog:main_page' %}">Главная</a>
+        <a href="#">О сайте</a>
+        <a href="#">Популярное</a>
+    </nav>
+    {% block page_content %} {% endblock page_content %}
+</body>
+</html>
