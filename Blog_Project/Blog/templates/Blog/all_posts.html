@@ -12,8 +12,9 @@
 {% block page_content %}
     <ul>
         {% for post in posts %}
-            <a href="{% url 'Blog:post_detail' post.id %}" ><li><h1>{{ post.title }}</h1></li></a>
+            <a href="{{ post.get_absolute_url }}" ><li><h1>{{ post.title }}</h1></li></a>
             <p>{{ post.pub_date }}</p>
         {% endfor %}
     </ul>
+    {% include "Blog/pagination.html" with page=posts %}
 {% endblock page_content %}

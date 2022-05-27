@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Все посты
+    {{ post.title }}
 {% endblock title %}
 
 {% block css_links %}
@@ -11,6 +11,6 @@
 
 {% block page_content %}
     <h1>{{ post.title }}</h1>
-    <p>{{ post.text }}</p>
+    <p>{{ post.text|linebreaks }}</p>
     <p>{{ post.pub_date }}</p>
 {% endblock page_content %}
