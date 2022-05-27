@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <nav>
-        <a href="#">Главная</a>
-        <a href="#">О сайте</a>
-        <a href="#">Популярное</a>
-    </nav>
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block css_links %}
+
+{% endblock css_links %}
+
+{% block page_content %}
     <ul>
         {% for post in posts %}
             <li>
@@ -20,5 +19,4 @@
             <p>{{ post.pub_date }}</p>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock page_content %}
