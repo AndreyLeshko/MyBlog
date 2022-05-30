@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Поделиться постом
+{% endblock title %}
+
+{% block css_links %}
+
+{% endblock css_links %}
+
+{% block page_content %}
+    {% if sent %}
+        <h1>Сообщение успешно отправлено</h1>
+        <p>Вы поделились постом <i>{{ post.title }}</i> с {{ form.cleaned_data.to }}.</p>
+    {% else %}
+        <h1>Поделиться через почту:</h1>
+        <form action="." method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Отправить">
+        </form>
+    {% endif %}
+{% endblock page_content %}

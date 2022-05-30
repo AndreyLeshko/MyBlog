@@ -12,5 +12,40 @@
 {% block page_content %}
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaks }}</p>
-    <p>{{ post.pub_date }}</p>
+    <p>Дата публикации: {{ post.pub_date }}</p>
+    <p>Теги:
+        {% if post.tags.all %}
+            {{ post.tags.all|join:", " }}
+        {% else %}
+            <i>У данного поста нет отмеченных тегов</i>
+        {% endif %}
+    </p>
+    <p><a href="{% url 'Blog:post_share' post.id %}">Поделиться постом</a></p>
+
+    {% with comments.count as total_comments %}
+        <h2>{{ total_comments }} Комментариев</h2>
+    {% endwith %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Комментарий {{ forloop.counter }} от {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.text|linebreaks }}
+        </div>
+    {% empty %}
+        <p>Нет комментариев</p>
+    {% endfor %}
+
+    {% if new_comment %}
+        <h2>Комментарий добавлен</h2>
+    {% else %}
+        <h2>Добавить комментарий</h2>
+        <form action="." method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Добавить комментарий"></p>
+        </form>
+    {% endif %}
 {% endblock page_content %}

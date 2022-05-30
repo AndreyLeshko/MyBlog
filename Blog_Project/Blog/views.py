@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
 
-from .models import Post
+from .models import Post, Comment
+from .forms import EmailPostForm, CommentForm
 
 
 def main_page(request):
@@ -25,5 +27,36 @@ def all_posts(request):
 
 def post_detail(request, post_id, post_slug):
     post = get_object_or_404(Post, pk=post_id)
-    # post = Post.objects.get(pk=post_id)
-    return render(request, 'Blog/post_detail.html', {'post': post})
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+    return render(request, 'Blog/post_detail.html', {'post': post,
+                                                     'new_comment': new_comment,
+                                                     'comment_form': comment_form,
+                                                     'comments': comments,
+                                                     })
+
+
+def post_share(request, post_id):
+    # post = get_object_or_404(Post, pk=post_id, status='active')
+    post = get_object_or_404(Post, pk=post_id)
+    sent = False
+    if request.method == 'POST':
+        form = EmailPostForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            subject = f'{cd["name"]} ({cd["email"]}) рекомендует вам прочитать пост {post.title}'
+            message = f'Прочитайте пост {post.title} \nСсылка на пост: {post_url} \n\n {cd["comments"]}'
+            send_mail(subject, message, 'andrey.leshko.blog@gmail.com', [cd["to"], ])
+            sent = True
+    else:
+        form = EmailPostForm()
+        return render(request, 'Blog/share.html', {'form': form, 'post': post, 'sent': sent})
