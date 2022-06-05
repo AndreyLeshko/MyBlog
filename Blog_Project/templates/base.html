@@ -5,15 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'Blog/css/base.css' %}?20221027">
     {% block css_links %} {% endblock css_links %}
 </head>
 <body>
     <nav>
-        <a href="{% url 'Blog:main_page' %}">Главная</a>
-        <a href="#">О сайте</a>
-        <a href="#">Популярное</a>
-        <a href="{% url 'Blog:all_posts' %}">Все посты</a>
+        <a href="{% url 'Blog:main_page' %}" class="nav-link">Главная</a>
+        <a href="#" class="nav-link">О сайте</a>
+        <a href="#" class="nav-link">Популярное</a>
+        <a href="{% url 'Blog:all_posts' %}" class="nav-link">Все посты</a>
     </nav>
-    {% block page_content %} {% endblock page_content %}
+    <div class="page">
+        <div class="page-content">
+            {% block page_content %} {% endblock page_content %}
+        </div>
+    </div>
+
 </body>
 </html>

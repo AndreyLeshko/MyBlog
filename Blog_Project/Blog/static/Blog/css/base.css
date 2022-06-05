@@ -1,0 +1,38 @@
+body {
+    margin: 0px;
+
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+}
+
+.page-content {
+    width: 70%;
+
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f8e690;
+    margin: 0px;
+    padding: 10px;
+}
+
+.nav-link {
+    display: inline-block;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: #bba784;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #bba784;
+    color: black;
+}
