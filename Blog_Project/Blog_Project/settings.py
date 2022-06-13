@@ -16,6 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -129,3 +130,4 @@ EMAIL_HOST_USER = 'andrey.leshko.blog@gmail.com'
 EMAIL_HOST_PASSWORD = '0911Post'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+

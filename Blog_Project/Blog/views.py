@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import EmailPostForm, CommentForm
 
 
@@ -60,3 +60,11 @@ def post_share(request, post_id):
     else:
         form = EmailPostForm()
         return render(request, 'Blog/share.html', {'form': form, 'post': post, 'sent': sent})
+
+
+def tag_posts(request, tag_slug):
+    tag = Tag.objects.get(slug=tag_slug)
+    posts = tag.posts.all()
+    # posts = Post.objects.filter(tag__slug=tag_slug)
+    return render(request, 'Blog/tag_posts.html', {'posts': posts, 'tag': tag})
+    # return render(request, 'Blog/tag_posts.html', {'tag': tag})

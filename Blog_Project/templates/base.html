@@ -9,16 +9,21 @@
     {% block css_links %} {% endblock css_links %}
 </head>
 <body>
-    <nav>
-        <a href="{% url 'Blog:main_page' %}" class="nav-link">Главная</a>
-        <a href="#" class="nav-link">О сайте</a>
-        <a href="#" class="nav-link">Популярное</a>
-        <a href="{% url 'Blog:all_posts' %}" class="nav-link">Все посты</a>
-    </nav>
-    <div class="page">
-        <div class="page-content">
-            {% block page_content %} {% endblock page_content %}
+    <div class="header">
+        <div class="header-logo">
+            <img src="/static/img/blog-logo.png" alt="BLOG"  width="100px">
         </div>
+        <nav>
+            <a href="{% url 'Blog:main_page' %}" class="nav-link">Главная</a>
+            <a href="#" class="nav-link">О сайте</a>
+            <a href="#" class="nav-link">Популярное</a>
+            <a href="{% url 'Blog:all_posts' %}" class="nav-link">Все посты</a>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        {% block page_content %} {% endblock page_content %}
     </div>
 
 </body>

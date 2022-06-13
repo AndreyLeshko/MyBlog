@@ -1,0 +1,38 @@
+.post {
+    display: block;
+    background-color: #eae8dd;
+    padding: 10px; 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+/* ========= Pagination ============== */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-color: #eae8dd;
+    padding: 10px; 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    width: auto;
+}
+
+.pag-button {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
+}
+
+.pag-button:hover {
+    text-decoration: underline;
+}
+
+.current {
+    font-style: italic;
+}

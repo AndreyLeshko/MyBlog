@@ -6,15 +6,17 @@
 {% endblock title %}
 
 {% block css_links %}
-
+    <link rel="stylesheet" href="{% static 'Blog/css/all-posts.css' %}?20221027">
 {% endblock css_links %}
 
 {% block page_content %}
-    <ul>
+
         {% for post in posts %}
-            <a href="{{ post.get_absolute_url }}" ><li><h1>{{ post.title }}</h1></li></a>
-            <p>{{ post.pub_date }}</p>
+            <div class="post">
+                <a href="{{ post.get_absolute_url }}" ><h1>{{ post.title }}</h1></a>
+                <p>{{ post.pub_date }}</p>
+            </div>
+
         {% endfor %}
-    </ul>
     {% include "Blog/pagination.html" with page=posts %}
 {% endblock page_content %}

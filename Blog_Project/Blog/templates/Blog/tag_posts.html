@@ -2,20 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Главная
+    Посты с тегом {{ tag }}
 {% endblock title %}
 
 {% block css_links %}
-    <link rel="stylesheet" href="{% static 'Blog/css/main-page.css' %}?20221027">
+    <link rel="stylesheet" href="{% static 'Blog/css/tag_posts.css' %}?20221027">
 {% endblock css_links %}
 
 {% block page_content %}
+    <h1>Посты с тэгом: {{ tag|title }}</h1>
     {% for post in posts %}
         <div class="post">
-            <a href="{{ post.get_absolute_url }}"><h1>{{ post.title }}</h1></a>
-            <p>{{ post.text|truncatewords:100 }}</p>
+            <a href="{{ post.get_absolute_url }}" ><h1>{{ post.title }}</h1></a>
             <p>{{ post.pub_date }}</p>
         </div>
     {% endfor %}
-    </ul>
 {% endblock page_content %}

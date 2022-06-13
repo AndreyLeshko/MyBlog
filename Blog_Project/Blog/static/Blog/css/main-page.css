@@ -1,0 +1,8 @@
+.post {
+    display: block;
+    background-color: #eae8dd;
+    padding: 10px; 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+}

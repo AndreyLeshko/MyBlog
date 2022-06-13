@@ -3,20 +3,27 @@ body {
 
 }
 
-.page {
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.page-content {
-    width: 70%;
 
+/* ============= HEADER ================ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(40, 60, 106, 0.9);
+    padding: 10px; 0px;
 }
 
 nav {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #f8e690;
+    /* display: flex; */
+    /* justify-content: flex-end; */
     margin: 0px;
     padding: 10px;
 }
@@ -29,10 +36,17 @@ nav {
     font-size: 25px;
     border: 2px solid;
     border-radius: 20px;
-    border-color: #bba784;
+    border-color: #a8afbf;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #bba784;
+    background-color: #a8afbf;
     color: black;
+    text-decoration: none;
+    opacity: 0.75;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    opacity: 1;
 }
