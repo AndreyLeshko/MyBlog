@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Выход из аккаунта
+{% endblock title %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{% static 'Account/css/' %}?20221027">
+{% endblock css_links %}
+
+{% block page_content %}
+    <h1>Вы вышли из своего аккаунта</h1>
+    <p>Вы можете <a href="{% url 'Account:login' %}">войти</a> снова</p>
+{% endblock page_content %}

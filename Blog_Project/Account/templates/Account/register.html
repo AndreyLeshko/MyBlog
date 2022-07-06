@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Регистрация
+{% endblock title %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{% static 'Account/css/' %}?20221027">
+{% endblock css_links %}
+
+{% block page_content %}
+    <h1>Регистрация</h1>
+    <h2>Заполните следующие поля:</h2>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Зарегистрироваться"></p>
+    </form>
+{% endblock page_content %}
