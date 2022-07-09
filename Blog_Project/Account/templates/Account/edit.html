@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Редактирование профиля
+{% endblock title %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{% static 'Account/css/edit.css' %}?20220909">
+{% endblock css_links %}
+
+{% block page_content %}
+    <div class="standart-container">
+        <h1>Редактирование профиля</h1>
+        <form action="." method="post" enctype="multipart/form-data">
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            {% csrf_token %}
+            <p><input class="save-changes-button" type="submit" value="Сохранить изменения"></p>
+        </form>
+    </div>
+{% endblock page_content %}

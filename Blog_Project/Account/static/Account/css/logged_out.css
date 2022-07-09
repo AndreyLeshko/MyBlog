@@ -1,17 +1,24 @@
-.post {
+p {
+    font-size: 20px;
+}
+
+.standart-container {
     display: block;
     background-color: #bfc9da;
     padding: 10px; 5px;
     border: 1px solid black;
     border-radius: 10px;
-    margin: 10px 0px;
+    margin: 30px 0px;
+    text-align: center;
+    width: 500px;
+    align-self: center;
 }
 
-.post a{
-    color: black;
+.login-link {
     text-decoration: none;
+    color: blue;
 }
 
-.post a:hover {
+.login-link:hover {
     text-decoration: underline;
 }

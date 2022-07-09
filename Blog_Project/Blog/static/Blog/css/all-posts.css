@@ -1,6 +1,6 @@
 .post {
     display: block;
-    background-color: #eae8dd;
+    background-color: #bfc9da;
     padding: 10px; 5px;
     border: 1px solid black;
     border-radius: 10px;
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    background-color: #eae8dd;
+    background-color: #bfc9da;
     padding: 10px; 5px;
     border: 1px solid black;
     border-radius: 10px;
@@ -35,4 +35,13 @@
 
 .current {
     font-style: italic;
+}
+
+.post a{
+    color: black;
+    text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
 }

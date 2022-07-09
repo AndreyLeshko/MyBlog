@@ -26,25 +26,25 @@ SECRET_KEY = 'django-insecure-angfog8!5r0ou&odnlyh^!2&$h&e+=$^8s9-n=1d7tzu#pvm)!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'Account.apps.AccountConfig',
-    'Blog.apps.BlogConfig',
+    'Account',
+    'Blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog_Project.urls'
@@ -147,3 +147,10 @@ EMAIL_HOST_PASSWORD = '0911Post'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+# if DEBUG:
+#     CACHE_BACKEND = 'dummy://'
+#     CACHES = {
+#         'default': {
+#             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#         }
+#     }

@@ -6,10 +6,16 @@
 {% endblock title %}
 
 {% block css_links %}
-    <link rel="stylesheet" href="{% static 'Account/css/' %}?20221027">
+    <link rel="stylesheet" href="{% static 'Account/css/logged_out.css' %}?20221027">
 {% endblock css_links %}
 
 {% block page_content %}
-    <h1>Вы вышли из своего аккаунта</h1>
-    <p>Вы можете <a href="{% url 'Account:login' %}">войти</a> снова</p>
+    <div class="standart-container">
+        <h1>Вы вышли из своего аккаунта</h1>
+        <p>
+            Вы можете
+            <a href="{% url 'Account:login' %}" class="login-link">войти</a>
+            снова
+        </p>
+    </div>
 {% endblock page_content %}

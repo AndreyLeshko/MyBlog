@@ -1,0 +1,45 @@
+p {
+    font-size: 20px;
+}
+
+input {
+    font-size: 18px;
+}
+
+.standart-container {
+    display: block;
+    background-color: #bfc9da;
+    padding: 10px; 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 30px 0px;
+    text-align: center;
+    width: 500px;
+    align-self: center;
+}
+
+.link {
+    font-size: 18px;
+    border: 1px solid #84deda;
+    border-radius: 10px;
+    background-color: #84deda;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    background-color: #82B93C;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.login-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

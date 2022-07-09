@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block css_links %}
-    <link rel="stylesheet" href="{% static 'Blog/css/post-detail.css' %}?20221027">
+    <link rel="stylesheet" href="{% static 'Blog/css/post-detail.css' %}?20220909">
 {% endblock css_links %}
 
 {% block page_content %}
@@ -16,14 +16,15 @@
         <p>{{ post.text|linebreaks }}</p>
         <p>Дата публикации: {{ post.pub_date }}</p>
         <p>Теги:
-            {% if post.tags.all %}
-                {{ post.tags.all|join:", " }}
-                {% for tag in post.tags.all %}
-                    <a href="{% url 'Blog:tag_posts' tag.slug %}">{{ tag }}</a>
-                {% endfor %}
-            {% else %}
-                <i>У данного поста нет отмеченных тегов</i>
-            {% endif %}
+            {% with post.tags.all as post_tags %}
+                {% if post_tags %}
+                    {% for tag in post_tags %}
+                        <a href="{% url 'Blog:tag_posts' tag.slug %}">#{{ tag }}</a>
+                    {% endfor %}
+                {% else %}
+                    <i>У данного поста нет отмеченных тегов</i>
+                {% endif %}
+            {% endwith %}
         </p>
     </div>
 
@@ -32,21 +33,21 @@
     </div>
 
     <div class="comments">
-        <!-- {% with comments.count as total_comments %}
-            <p class="count-comments">Комментариев: {{ total_comments }}</p>
-        {% endwith %} -->
-        <h2 class="comments-head">Комментарии:</h2>
-        {% for comment in comments %}
-            <div class="comment">
-                <p class="author-comment">{{ comment.name }}</p>
-                <p class="comment-text">{{ comment.text|linebreaks }}</p>
-                <p class="comment-date">{{ comment.created }}</p>
-
-            </div>
-        {% empty %}
-            <p>Нет комментариев</p>
-        {% endfor %}
+        {% with comments as all_comments %}
+            <p class="count-comments">Комментариев: {{ all_comments.count }}</p>
+            <h2 class="comments-head">Комментарии:</h2>
+            {% for comment in all_comments %}
+                <div class="comment">
+                    <p class="author-comment">{{ comment.name }}</p>
+                    <p class="comment-text">{{ comment.text|linebreaks }}</p>
+                    <p class="comment-date">{{ comment.created }}</p>
+                </div>
+            {% empty %}
+                <p>Нет комментариев</p>
+            {% endfor %}
+        {% endwith %}
     </div>
+
     <div class="new_comment">
         {% if new_comment %}
             <h2>Комментарий добавлен</h2>
