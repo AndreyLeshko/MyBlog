@@ -1,3 +1,6 @@
 /venv/
 /.idea/
 *.pyc
+.env.dev
+docker-compose.yml
+/Blog_Project/Dockerfile

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import main_page, all_posts, post_detail, post_share, tag_posts
+from .views import main_page, all_posts, post_detail, post_share, tag_posts, no_page
 
 app_name = 'Blog'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:post_id>/share/', post_share, name='post_share'),
     path('post/<int:post_id>/<slug:post_slug>/', post_detail, name='post_detail'),
     path('tag/<slug:tag_slug>/', tag_posts, name='tag_posts'),
+    path('no-page', no_page, name='no_page')
 ]

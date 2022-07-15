@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+from os import path, environ
 import os.path
 from pathlib import Path
 
@@ -19,14 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-angfog8!5r0ou&odnlyh^!2&$h&e+=$^8s9-n=1d7tzu#pvm)!'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # INTERNAL_IPS = [
 #     "127.0.0.1",
@@ -78,16 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Blog_Project.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -147,10 +130,36 @@ EMAIL_HOST_PASSWORD = '0911Post'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# if DEBUG:
-#     CACHE_BACKEND = 'dummy://'
-#     CACHES = {
-#         'default': {
-#             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-#         }
-#     }
+
+DEVELOP = True
+
+if DEVELOP:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'django-insecure-angfog8!5r0ou&odnlyh^!2&$h&e+=$^8s9-n=1d7tzu#pvm)!'
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+    ALLOWED_HOSTS = []
+    # devolop database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    SECRET_KEY = environ.get("SECRET_KEY")
+    DEBUG = int(environ.get("DEBUG", default=0))
+    ALLOWED_HOSTS = environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+    # work database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'my_blog_db',
+            "USER": os.environ.get("SQL_USER", "user"),
+            "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+            "HOST": os.environ.get("SQL_HOST", "localhost"),
+            "PORT": os.environ.get("SQL_PORT", "5432"),
+        }
+    }
+
+

@@ -68,3 +68,7 @@ def tag_posts(request, tag_slug):
     # posts = Post.objects.filter(tag__slug=tag_slug)
     return render(request, 'Blog/tag_posts.html', {'posts': posts, 'tag': tag})
     # return render(request, 'Blog/tag_posts.html', {'tag': tag})
+
+
+def no_page(request):
+    return render(request, 'Blog/page_not_exist.html')

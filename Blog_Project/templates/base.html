@@ -15,8 +15,8 @@
         </div>
         <nav>
             <a href="{% url 'Blog:main_page' %}" class="nav-link">Главная</a>
-            <a href="#" class="nav-link">О сайте</a>
-            <a href="#" class="nav-link">Популярное</a>
+            <a href="{% url 'Blog:no_page' %}" class="nav-link">О сайте</a>
+            <a href="{% url 'Blog:no_page' %}" class="nav-link">Популярное</a>
             <a href="{% url 'Blog:all_posts' %}" class="nav-link">Все посты</a>
 
             {% if request.user.is_authenticated %}
